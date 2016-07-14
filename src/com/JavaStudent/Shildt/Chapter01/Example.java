@@ -1,4 +1,4 @@
-package com.JavaStudent.Shildt.module01;
+package com.JavaStudent.Shildt.Chapter01;
 
 public class Example {
     public static void main(String[] args){
