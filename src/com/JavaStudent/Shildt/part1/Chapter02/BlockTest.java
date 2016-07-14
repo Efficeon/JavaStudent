@@ -1,4 +1,4 @@
-package com.JavaStudent.Shildt.Chapter01;
+package com.JavaStudent.Shildt.part1.Chapter02;
 
 public class BlockTest {
     public static void main(String[] args) {
