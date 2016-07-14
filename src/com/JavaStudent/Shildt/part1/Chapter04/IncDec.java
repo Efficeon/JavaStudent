@@ -1,17 +1,18 @@
-package com.JavaStudent.Shildt.part1.Chapter03;
+package com.JavaStudent.Shildt.part1.Chapter04;
 
-public class OpEquals {
+public class IncDec {
     public static void main(String args[]) {
         int a = 1;
         int b = 2;
-        int c = 3;
+        int c;
+        int d;
 
-        a += 5;
-        b *= 4;
-        c += a * b;
-        c %= 6;
+        c = ++b;
+        d = a++;
+        c++;
         System.out.println("a = " + a);
         System.out.println("b = " + b);
         System.out.println("c = " + c);
+        System.out.println("d = " + d);
     }
 }

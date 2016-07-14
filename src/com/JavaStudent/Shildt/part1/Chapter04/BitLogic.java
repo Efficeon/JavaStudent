@@ -1,4 +1,4 @@
-package com.JavaStudent.Shildt.part1.Chapter02;
+package com.JavaStudent.Shildt.part1.Chapter04;
 
 public class BitLogic {
     public static void main(String args[]) {

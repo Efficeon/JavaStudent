@@ -1,4 +1,4 @@
-package com.JavaStudent.Shildt.part1.Chapter03;
+package com.JavaStudent.Shildt.part1.Chapter04;
 
 public class Modulus {
     public static void main(String args[]) {
