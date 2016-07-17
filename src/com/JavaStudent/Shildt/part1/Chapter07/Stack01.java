@@ -1,16 +1,15 @@
 package com.JavaStudent.Shildt.part1.Chapter07;
 
-public class Stack {
-    private int stck[];
+public class Stack01 {
+    private int stck[] = new int[10];
     private int tos;
 
-    Stack(int size) {
-        stck = new int[size];
+    Stack01() {
         tos = -1;
     }
 
     void push(int item) {
-        if(tos==stck.length-1)
+        if(tos==9)
             System.out.println("Стек заполнен.");
         else
             stck[++tos] = item;
