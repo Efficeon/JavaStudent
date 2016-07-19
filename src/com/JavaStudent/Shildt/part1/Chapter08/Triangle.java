@@ -1,6 +1,6 @@
 package com.JavaStudent.Shildt.part1.Chapter08;
 
-public class Triangle extends Figure {
+public class Triangle extends Figure01 {
     Triangle(double a, double b) {
         super(a, b);
     }

@@ -6,7 +6,7 @@ public class AbstractAreas {
         Rectangle r = new Rectangle(9, 5);
         Triangle t = new Triangle(10, 8);
 
-        Figure figref;
+        Figure01 figref;
 
         figref = r;
         System.out.println("Площадь равна " + figref.area());

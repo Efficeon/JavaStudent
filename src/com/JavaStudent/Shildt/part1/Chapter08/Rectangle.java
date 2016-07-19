@@ -1,6 +1,6 @@
 package com.JavaStudent.Shildt.part1.Chapter08;
 
-public class Rectangle extends Figure {
+public class Rectangle extends Figure01 {
     Rectangle(double a, double b) {
         super(a, b);
     }
