@@ -1,8 +1,7 @@
 package com.JavaStudent.Shildt.part1.Chapter08;
 
-public class UseSuper {
+class CallingCons {
     public static void main(String args[]) {
-        B03 subOb = new B03(1, 2);
-        subOb.show();
+        C05 c05 = new C05();
     }
 }

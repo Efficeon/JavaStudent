@@ -1,8 +1,9 @@
 package com.JavaStudent.Shildt.part1.Chapter08;
 
-public class UseSuper {
+public class Override {
     public static void main(String args[]) {
-        B03 subOb = new B03(1, 2);
+        B06 subOb = new B06(1, 2, 3);
+
         subOb.show();
     }
 }
