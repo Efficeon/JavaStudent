@@ -1,10 +1,10 @@
 package com.JavaStudent.Shildt.pert2.Chapter18;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public class HashSetDemo {
     public static void main(String[] args) {
-        HashSet<String> hs = new HashSet<String>();
+        LinkedHashSet<String> hs = new LinkedHashSet<String>();
         hs.add("Бета");
         hs.add("Альфа");
         hs.add("Эта");
