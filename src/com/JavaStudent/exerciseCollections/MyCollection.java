@@ -51,12 +51,12 @@ public class MyCollection extends ArrayList{
         incElements(newElement);
     }
 
-    //дудаление элемента в начале коллекции
+    //удаление элемента в начале коллекции
     public void delToFirst(){
-        int templ[] = new int[size-1];
+        int temp[] = new int[size-1];
         int dellElementValue = collection[0];
-        System.arraycopy(collection, 1, templ, 0, templ.length);
-        collection=templ;
+        System.arraycopy(collection, 1, temp, 0, temp.length);
+        collection=temp;
         ensureCapacity(--size);
         decElements(dellElementValue);
     }
@@ -64,21 +64,21 @@ public class MyCollection extends ArrayList{
     //удаление элемента по номеру индекса элемента
     public void delToIndex(int index){
 
-        int templ[] = new int[size-1];
+        int temp[] = new int[size-1];
         int dellElementValue = collection[index];
-        System.arraycopy(collection, 0, templ,0, index);
-        System.arraycopy(collection, index+1, templ, index, size - (index+1));
-        collection=templ;
+        System.arraycopy(collection, 0, temp,0, index);
+        System.arraycopy(collection, index+1, temp, index, size - (index+1));
+        collection=temp;
         ensureCapacity(--size);
         decElements(dellElementValue);
     }
 
     //удаление последнего элемента коллекции
     public void delToEnd(){
-        int templ[] = new int[size-1];
+        int temp[] = new int[size-1];
         int dellElementValue = collection[size-1];
-        System.arraycopy(collection, 0, templ, 0, templ.length);
-        collection=templ;
+        System.arraycopy(collection, 0, temp, 0, temp.length);
+        collection=temp;
         ensureCapacity(--size);
         decElements(dellElementValue);
     }
