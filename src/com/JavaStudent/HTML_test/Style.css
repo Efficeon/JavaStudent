@@ -1,0 +1,27 @@
+/*h1 {
+    color:#3127B0;
+}*/
+
+#simple-text {
+    color:red;
+}
+
+.myclass{
+    font-size: 30px;
+}
+.red{
+    color: red;
+}
+
+.site-header{
+    background: #4a423f;
+    color: #e8dbd3;
+    padding: 20px 10px;
+    box-shadow: 0 2px 1px #756969;
+}
+
+.site-header h1{
+    margin: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+}
