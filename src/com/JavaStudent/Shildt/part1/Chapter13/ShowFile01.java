@@ -40,7 +40,7 @@ public class ShowFile01 {
         try {
             fin.close();
         } catch(IOException e) {
-            System.out.println("ошибка закрытия файла");
+            System.out.println("Ошибка закрытия файла");
         }
     }
 }
