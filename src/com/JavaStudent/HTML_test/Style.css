@@ -79,3 +79,15 @@
     margin-top: 0;
     color: #f05f40;
 }
+
+.col-main{
+    width: 70%;
+    float: left;
+}
+
+.col-sidebar{
+    width: 25%;
+    background: #eee;
+    float: right;
+    padding: 20px 2.5%;
+}
