@@ -14,6 +14,6 @@ public class CookingPoridge implements  CookingMeal{
     }
 
     public void cleaningProducts(){
-        System.out.println("Clreaning products: " + products);
+        System.out.println("Cleaning products: " + products);
     }
 }
