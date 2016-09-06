@@ -1,6 +1,8 @@
-package com.JavaStudent.DesignPattern.Composite01.food;
+package com.JavaStudent.DesignPattern.Composite01;
 
-import com.JavaStudent.DesignPattern.Composite01.Pizza;
+import com.JavaStudent.DesignPattern.Composite01.food.Onion;
+import com.JavaStudent.DesignPattern.Composite01.food.Potatoes;
+import com.JavaStudent.DesignPattern.Composite01.food.Tomatoes;
 
 public class Pizzeria {
     public static void main(String[] args) {
