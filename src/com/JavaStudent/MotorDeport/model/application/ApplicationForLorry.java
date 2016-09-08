@@ -4,7 +4,7 @@ import com.JavaStudent.MotorDeport.model.Car;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect
-public class ApplicationForLorry implements ApplicationForTransport{
+public class ApplicationForLorry{
     private static int ID = 0;       //ID заявки
     private byte lengthOfBody;       //Длинна груза
     private byte widthOfBody;        //Ширина груза

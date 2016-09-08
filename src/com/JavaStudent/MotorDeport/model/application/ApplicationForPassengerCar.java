@@ -4,7 +4,7 @@ import com.JavaStudent.MotorDeport.model.Car;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect
-public class ApplicationForPassengerCar implements ApplicationForTransport{
+public class ApplicationForPassengerCar{
     private static int ID = 0;         //ID заявки
     private int numberOfPassengers;    //Количество пассажиров
     private Car car;                   //Автомобиль

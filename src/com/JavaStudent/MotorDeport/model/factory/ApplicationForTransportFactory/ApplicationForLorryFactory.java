@@ -1,10 +1,11 @@
 package com.JavaStudent.MotorDeport.model.factory.ApplicationForTransportFactory;
 
-import com.JavaStudent.MotorDeport.model.application.ApplicationForTransport;
+import com.JavaStudent.MotorDeport.model.Car;
+import com.JavaStudent.MotorDeport.model.application.ApplicationForLorry;
 
-public class ApplicationForLorryFactory implements ApplicationForTransportFactory{
-    @Override
-    public ApplicationForTransport create() {
-        return null;
+public class ApplicationForLorryFactory{
+    public ApplicationForLorry create(byte lengthOfBody, byte widthOfBody, byte heightOfBody,
+                                      byte cargoWeight, Car car) {
+        return new ApplicationForLorry(lengthOfBody, widthOfBody, heightOfBody, cargoWeight, car);
     }
 }
