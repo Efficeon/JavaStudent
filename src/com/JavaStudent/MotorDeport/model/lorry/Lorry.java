@@ -1,15 +1,16 @@
 package com.JavaStudent.MotorDeport.model.lorry;
 
-import com.JavaStudent.MotorDeport.model.Car;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-public abstract class Lorry implements Car
+@JsonAutoDetect
+public abstract class Lorry
 {
-    protected int ID;                        //ID автомобиля
-    protected byte carryingCapacity;         //Грузоподъемность
-    protected byte lengthOfBody;             //Длинна
-    protected byte widthOfBody;              //Ширина
-    protected byte heightOfBody;             //Высота
-    protected boolean technicalDiagnostics;  //Техническая диагностика
+    private int ID;                        //ID автомобиля
+    private byte carryingCapacity;         //Грузоподъемность
+    private byte lengthOfBody;             //Длинна
+    private byte widthOfBody;              //Ширина
+    private byte heightOfBody;             //Высота
+    private boolean technicalDiagnostics;  //Техническая диагностика
 
     protected Lorry(int ID, byte carryingCapacity, byte lengthOfBody, byte widthOfBody,
                              byte heightOfBody, boolean technicalDiagnostics) {

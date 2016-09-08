@@ -7,5 +7,22 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Загрузки/jackson-annotations-2.6.1.jar!/" />
+          <root url="jar://$USER_HOME$/Загрузки/jackson-core-2.6.1.jar!/" />
+          <root url="jar://$USER_HOME$/Загрузки/jackson-databind-2.6.1.jar!/" />
+          <root url="jar://$USER_HOME$/Загрузки/jsoup-1.9.2.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/Загрузки/jackson-annotations-2.6.1-javadoc(1).jar!/" />
+          <root url="jar://$USER_HOME$/Загрузки/jackson-annotations-2.6.1-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Загрузки/jsoup-1.9.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

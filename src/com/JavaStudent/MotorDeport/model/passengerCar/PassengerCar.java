@@ -1,7 +1,9 @@
 package com.JavaStudent.MotorDeport.model.passengerCar;
 
 import com.JavaStudent.MotorDeport.model.Car;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+@JsonAutoDetect
 public abstract class PassengerCar implements Car
 {
     protected int ID;                         //ID автомобиля

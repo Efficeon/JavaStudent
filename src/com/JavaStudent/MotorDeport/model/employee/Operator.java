@@ -1,5 +1,8 @@
 package com.JavaStudent.MotorDeport.model.employee;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect
 public class Operator implements Employee{
     private int ID;
     private String name;

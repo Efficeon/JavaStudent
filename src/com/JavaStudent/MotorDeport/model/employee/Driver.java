@@ -1,7 +1,9 @@
 package com.JavaStudent.MotorDeport.model.employee;
 
 import com.JavaStudent.MotorDeport.model.Car;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+@JsonAutoDetect
 public class Driver implements Employee{
     private int ID;
     private String name;
