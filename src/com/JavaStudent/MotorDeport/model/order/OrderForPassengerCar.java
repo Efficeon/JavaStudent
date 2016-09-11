@@ -1,15 +1,13 @@
-package com.JavaStudent.MotorDeport.model.application;
+package com.JavaStudent.MotorDeport.model.order;
 
 import com.JavaStudent.MotorDeport.model.Car;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-@JsonAutoDetect
-public class ApplicationForPassengerCar{
+public class OrderForPassengerCar {
     private static int ID = 0;         //ID заявки
     private int numberOfPassengers;    //Количество пассажиров
     private Car car;                   //Автомобиль
 
-    public ApplicationForPassengerCar(int numberOfPassengers, Car car) {
+    public OrderForPassengerCar(int numberOfPassengers, Car car) {
         this.ID = ID++;
         this.numberOfPassengers = numberOfPassengers;
         this.car = car;

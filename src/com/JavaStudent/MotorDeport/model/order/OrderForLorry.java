@@ -1,10 +1,8 @@
-package com.JavaStudent.MotorDeport.model.application;
+package com.JavaStudent.MotorDeport.model.order;
 
 import com.JavaStudent.MotorDeport.model.Car;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-@JsonAutoDetect
-public class ApplicationForLorry{
+public class OrderForLorry {
     private static int ID = 0;       //ID заявки
     private byte lengthOfBody;       //Длинна груза
     private byte widthOfBody;        //Ширина груза
@@ -12,7 +10,7 @@ public class ApplicationForLorry{
     private byte cargoWeight;        //Вес груза
     private Car car;                 //Автомобиль
 
-    public ApplicationForLorry(byte lengthOfBody, byte widthOfBody, byte heightOfBody, byte cargoWeight, Car car){
+    public OrderForLorry(byte lengthOfBody, byte widthOfBody, byte heightOfBody, byte cargoWeight, Car car){
         this.ID++;
         this.lengthOfBody = lengthOfBody;
         this.widthOfBody = widthOfBody;

@@ -1,4 +1,4 @@
-package com.JavaStudent.MotorDeport.command;
+package com.JavaStudent.MotorDeport.controller.command;
 
 import com.JavaStudent.MotorDeport.model.ConsoleHelper;
 

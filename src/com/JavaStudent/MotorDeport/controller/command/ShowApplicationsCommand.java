@@ -1,4 +1,4 @@
-package com.JavaStudent.MotorDeport.command;
+package com.JavaStudent.MotorDeport.controller.command;
 
 public class ShowApplicationsCommand implements Command{
     @Override

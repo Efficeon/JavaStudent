@@ -1,30 +1,26 @@
 package com.JavaStudent.MotorDeport.model.employee;
 
 import com.JavaStudent.MotorDeport.model.Car;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-@JsonAutoDetect
-public class Driver{
-    private int ID;
-    private String name;
+import java.io.Serializable;
+
+public class Driver implements Serializable{
+    //static final long serialVersionUID = 5037585225066001448L;
+    private final String name;
+    private final String passportID;
     private Car car;
 
-    public Driver(int ID, String name, Car car) {
-        this.ID = ID;
-        this.name = name;
-        this.car = car;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+    public Driver(String name, String passportID) {
+       this.name = name;
+       this.passportID = passportID;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getPassportID() {
+        return passportID;
     }
 
     public Car getCar() {

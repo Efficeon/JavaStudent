@@ -1,20 +1,23 @@
 package com.JavaStudent.MotorDeport.model.lorry;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.JavaStudent.MotorDeport.model.employee.Driver;
 
-@JsonAutoDetect
-public abstract class Lorry
-{
-    private int ID;                        //ID автомобиля
-    private byte carryingCapacity;         //Грузоподъемность
-    private byte lengthOfBody;             //Длинна
-    private byte widthOfBody;              //Ширина
-    private byte heightOfBody;             //Высота
-    private boolean technicalDiagnostics;  //Техническая диагностика
+import java.io.Serializable;
 
-    protected Lorry(int ID, byte carryingCapacity, byte lengthOfBody, byte widthOfBody,
-                             byte heightOfBody, boolean technicalDiagnostics) {
-        this.ID = ID;
+public abstract class Lorry implements Serializable {
+    //static final long serialVersionUID = 5037585225066001448L;
+    private String licensePlate;             //Автомобильные номера
+    private double carryingCapacity;         //Грузоподъемность
+    private double lengthOfBody;             //Длинна
+    private double widthOfBody;              //Ширина
+    private double heightOfBody;             //Высота
+    private boolean technicalDiagnostics;    //Техническая диагностика
+
+    private Driver driver;
+
+    protected Lorry(String licensePlate, double carryingCapacity, double lengthOfBody, double widthOfBody,
+                    double heightOfBody, boolean technicalDiagnostics) {
+        this.licensePlate = licensePlate;
         this.carryingCapacity = carryingCapacity;
         this.lengthOfBody = lengthOfBody;
         this.widthOfBody = widthOfBody;
@@ -22,43 +25,39 @@ public abstract class Lorry
         this.technicalDiagnostics = technicalDiagnostics;
     }
 
-    public int getID() {
-        return ID;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public byte getCarryingCapacity() {
+    public double getCarryingCapacity() {
         return carryingCapacity;
     }
 
-    public void setCarryingCapacity(byte carryingCapacity) {
+    public void setCarryingCapacity(double carryingCapacity) {
         this.carryingCapacity = carryingCapacity;
     }
 
-    public byte getLengthOfBody() {
+    public double getLengthOfBody() {
         return lengthOfBody;
     }
 
-    public void setLengthOfBody(byte lengthOfBody) {
+    public void setLengthOfBody(double lengthOfBody) {
         this.lengthOfBody = lengthOfBody;
     }
 
-    public byte getWidthOfBody() {
+    public double getWidthOfBody() {
         return widthOfBody;
     }
 
-    public void setWidthOfBody(byte widthOfBody) {
+    public void setWidthOfBody(double widthOfBody) {
         this.widthOfBody = widthOfBody;
     }
 
-    public byte getHeightOfBody() {
+    public double getHeightOfBody() {
         return heightOfBody;
     }
 
-    public void setHeightOfBody(byte heightOfBody) {
+    public void setHeightOfBody(double heightOfBody) {
         this.heightOfBody = heightOfBody;
     }
 
@@ -66,8 +65,15 @@ public abstract class Lorry
         return technicalDiagnostics;
     }
 
-    public void setTechnicalDiagnostics(boolean technicalDiagnostics){
+    public void setTechnicalDiagnostics(boolean technicalDiagnostics) {
         this.technicalDiagnostics = technicalDiagnostics;
     }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    @Override
+    public abstract String toString();
 }
 

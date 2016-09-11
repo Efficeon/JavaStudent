@@ -1,12 +1,10 @@
-package com.JavaStudent.MotorDeport.command;
+package com.JavaStudent.MotorDeport.controller.command;
 
-import com.JavaStudent.MotorDeport.model.Car;
 import com.JavaStudent.MotorDeport.model.ConsoleHelper;
-import com.JavaStudent.MotorDeport.model.factory.ApplicationForTransportFactory.ApplicationForLorryFactory;
 
 import java.io.IOException;
 
-public class CreateApplication implements Command{
+public class CreateOrder implements Command{
     @Override
     public void execute() throws IOException {
         ConsoleHelper.writeMessage("Выберите тип заявки: ");
