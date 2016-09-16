@@ -5,10 +5,11 @@ import com.JavaStudent.MotorDeport.model.Car;
 import java.io.Serializable;
 
 public class Driver implements Serializable{
-    //static final long serialVersionUID = 5037585225066001448L;
+    //static final long serialVersionUID = -2830046108133983977L;
+
     private final String name;
     private final String passportID;
-    private Car car;
+    private Car car = null;
 
     public Driver(String name, String passportID) {
        this.name = name;
@@ -29,5 +30,20 @@ public class Driver implements Serializable{
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    @Override
+    public String toString() {
+        String carLicensePlate = "отсутствует";
+        if (car != null){
+            carLicensePlate = car.getLicensePlate();
+        }
+
+        return "Водитель: " +
+                "Номер паспорта: " + this.passportID + "; " +
+                "ФИО: " + this.getName() + ";\n" +
+                "Автомобиль: " + carLicensePlate + "; " +
+                "\n-----------------------------------------------------------------------------------" +
+                "-----------------------------------------------------------";
     }
 }

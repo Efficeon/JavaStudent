@@ -1,7 +1,11 @@
 package com.JavaStudent.MotorDeport.model.passengerCar;
 
-public class Hatchback extends PassengerCar{
-    public Hatchback(int ID, byte numberOfPassengers, boolean technicalTrunk) {
-        super(ID, numberOfPassengers, technicalTrunk);
+import java.io.Serializable;
+
+public class Hatchback extends PassengerCar implements Serializable{
+    //static final long serialVersionUID = 1847807168196659482L;
+    public Hatchback(String licensePlate, int numberOfPassengers, boolean technicalTrunk) {
+        super(licensePlate, numberOfPassengers, technicalTrunk);
+        type = "Хэ́тчбек";
     }
 }

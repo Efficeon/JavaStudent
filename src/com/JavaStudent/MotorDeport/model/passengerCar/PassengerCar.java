@@ -1,33 +1,41 @@
 package com.JavaStudent.MotorDeport.model.passengerCar;
 
 import com.JavaStudent.MotorDeport.model.Car;
+import com.JavaStudent.MotorDeport.model.employee.Driver;
 
-public abstract class PassengerCar implements Car
+import java.io.Serializable;
+
+public abstract class PassengerCar implements Car, Serializable
 {
-    protected int ID;                         //ID автомобиля
-    protected byte numberOfPassengers;        //Количество пасажиров
-    protected boolean technicalTrunk;         //Техническая диагностика
+    private String licensePlate;             //Автомобильные номера
+    private int numberOfPassengers;          //Количество пасажиров
+    private boolean technicalTrunk;          //Техническая диагностика
 
-    protected PassengerCar(int ID, byte numberOfPassengers, boolean technicalTrunk) {
-        this.ID = ID;
+    protected String type;                   //Тип Автомобиля
+    protected Driver driver;                 //Водитель
+
+    protected PassengerCar(String licensePlate, int numberOfPassengers, boolean technicalTrunk) {
+        this.licensePlate = licensePlate;
         this.numberOfPassengers = numberOfPassengers;
         this.technicalTrunk = technicalTrunk;
     }
 
-    public int getID() {
-        return ID;
+    @Override
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    @Override
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
-    public byte getNumberOfPassengers() {
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public int getNumberOfPassengers() {
         return numberOfPassengers;
-    }
-
-    public void setNumberOfPassengers(byte numberOfPassengers) {
-        this.numberOfPassengers = numberOfPassengers;
     }
 
     public boolean isTechnicalTrunk() {
@@ -36,5 +44,27 @@ public abstract class PassengerCar implements Car
 
     public void setTechnicalTrunk(boolean technicalTrunk) {
         this.technicalTrunk = technicalTrunk;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    @Override
+    public String toString(){
+        String nameDriver = "отсутствует";
+        if (this.driver != null){
+            nameDriver = driver.getName() + ", Номер паспорта: " +driver.getPassportID();
+        }
+        return  "Легковой автомобиль(" + this.type + "):\n" +
+                "Автомобильные номера: " + this.licensePlate + "; " +
+                "Количество пасажиров " + this.numberOfPassengers + "; " +
+                "Техническая диагностика: " + this.technicalTrunk + ";\n" +
+                "Закрепленный водитель: " + nameDriver +
+                "\n-----------------------------------------------------------------------------------" +
+                "-----------------------------------------------------------";
     }
 }

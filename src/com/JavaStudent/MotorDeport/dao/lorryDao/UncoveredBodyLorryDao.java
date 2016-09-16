@@ -1,15 +1,17 @@
 package com.JavaStudent.MotorDeport.dao.lorryDao;
 
-import com.JavaStudent.MotorDeport.model.ConsoleHelper;
+import com.JavaStudent.MotorDeport.exception.ExceptionLorrySelectionNotFound;
+import com.JavaStudent.MotorDeport.View.ConsoleHelper;
+import com.JavaStudent.MotorDeport.model.employee.Driver;
+import com.JavaStudent.MotorDeport.model.lorry.Lorry;
 import com.JavaStudent.MotorDeport.model.lorry.UncoveredBodyLorry;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UncoveredBodyLorryDao implements Serializable {
+public class UncoveredBodyLorryDao implements LorryDao, Serializable {
     private static Map<String, UncoveredBodyLorry> uncoveredBodyLorries = new HashMap<>();
-    private ObjectOutputStream lorryOutputStream;
 
     public UncoveredBodyLorry createUncoveredBodyLorry(String licensePlate, double carryingCapacity,
                                                         double lengthOfBody, double widthOfBody, double heightOfBody,
@@ -34,17 +36,29 @@ public class UncoveredBodyLorryDao implements Serializable {
     }
 
     public void addToDatabaseLorry() throws IOException {
-        lorryOutputStream = new ObjectOutputStream(new FileOutputStream("lorry/UncoveredBodyLorry.dat"));
+        ObjectOutputStream lorryOutputStream = new ObjectOutputStream(new FileOutputStream("./src/com/JavaStudent/MotorDeport/MotorDeportDatabase/lorry/UncoveredBodyLorry.dat"));
         lorryOutputStream.writeObject(uncoveredBodyLorries);
         lorryOutputStream.close();
     }
 
     public Map<String, UncoveredBodyLorry> getDatabaseUncoveredBodyLorry() throws IOException, ClassNotFoundException {
-        try (ObjectInputStream lorryInputStream = new ObjectInputStream(new FileInputStream("lorry/UncoveredBodyLorry.dat"))) {
+        try (ObjectInputStream lorryInputStream = new ObjectInputStream(new FileInputStream("./src/com/JavaStudent/MotorDeport/MotorDeportDatabase/lorry/UncoveredBodyLorry.dat"))) {
             return (HashMap<String, UncoveredBodyLorry>) lorryInputStream.readObject();
         } catch (EOFException e) {
+            //ConsoleHelper.writeMessage("Ошибка работы с файлом \"UncoveredBodyLorry.dat\" (EOFException)");
             return null;
         }
+    }
+
+    public UncoveredBodyLorry getUncoveredBodyLorry(String licensePlate) throws IOException, ClassNotFoundException {
+        if (getDatabaseUncoveredBodyLorry()!=null){
+            for (Map.Entry lorry : getDatabaseUncoveredBodyLorry().entrySet()){
+                if (lorry.getKey().equals(licensePlate)){
+                    return (UncoveredBodyLorry) lorry.getValue();
+                }
+            }
+        }
+        return null;
     }
 
     public void showDatabaseUncoveredBodyLorry() throws IOException, ClassNotFoundException {
@@ -53,5 +67,31 @@ public class UncoveredBodyLorryDao implements Serializable {
                 ConsoleHelper.writeMessage(lorry.getValue().toString());
             }
         }
+    }
+
+    @Override
+    public void addDriverToLorry(Lorry lorry, Driver driver) throws IOException, ClassNotFoundException {
+        UncoveredBodyLorry lorryUpdate = uncoveredBodyLorries.get(lorry.getLicensePlate());
+        lorryUpdate.setDriver(driver);
+        uncoveredBodyLorries.replace(lorry.getLicensePlate(), lorryUpdate);
+        addToDatabaseLorry();
+        getDatabaseUncoveredBodyLorry();
+    }
+
+    @Override
+    public Lorry lorrySelection(double lengthOfBody, double widthOfBody, double heightOfBody, int carryingCapacity) throws IOException, ClassNotFoundException, ExceptionLorrySelectionNotFound {
+        getDatabaseUncoveredBodyLorry();
+        Lorry lorrySelection = null;
+        for (Map.Entry<String, UncoveredBodyLorry> lorry : uncoveredBodyLorries.entrySet()){
+            if(lorry.getValue().getLengthOfBody() > lengthOfBody ||
+                    lorry.getValue().getWidthOfBody() > widthOfBody ||
+                    lorry.getValue().getHeightOfBody() > heightOfBody){
+                if (lorry.getValue().getCarryingCapacity() > carryingCapacity ||
+                        (lorry.getValue().isTechnicalDiagnostics())){
+                    lorrySelection = lorry.getValue();
+                }
+            } else throw new ExceptionLorrySelectionNotFound();
+        }
+        return lorrySelection;
     }
 }

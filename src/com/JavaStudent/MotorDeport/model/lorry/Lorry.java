@@ -1,10 +1,11 @@
 package com.JavaStudent.MotorDeport.model.lorry;
 
+import com.JavaStudent.MotorDeport.model.Car;
 import com.JavaStudent.MotorDeport.model.employee.Driver;
 
 import java.io.Serializable;
 
-public abstract class Lorry implements Serializable {
+public abstract class Lorry implements Serializable, Car {
     //static final long serialVersionUID = 5037585225066001448L;
     private String licensePlate;             //Автомобильные номера
     private double carryingCapacity;         //Грузоподъемность
@@ -13,10 +14,14 @@ public abstract class Lorry implements Serializable {
     private double heightOfBody;             //Высота
     private boolean technicalDiagnostics;    //Техническая диагностика
 
-    private Driver driver;
+    protected Driver driver = null;
 
-    protected Lorry(String licensePlate, double carryingCapacity, double lengthOfBody, double widthOfBody,
-                    double heightOfBody, boolean technicalDiagnostics) {
+    protected Lorry(String licensePlate,
+                    double carryingCapacity,
+                    double lengthOfBody,
+                    double widthOfBody,
+                    double heightOfBody,
+                    boolean technicalDiagnostics) {
         this.licensePlate = licensePlate;
         this.carryingCapacity = carryingCapacity;
         this.lengthOfBody = lengthOfBody;
@@ -73,7 +78,8 @@ public abstract class Lorry implements Serializable {
         return driver;
     }
 
-    @Override
-    public abstract String toString();
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
 }
 

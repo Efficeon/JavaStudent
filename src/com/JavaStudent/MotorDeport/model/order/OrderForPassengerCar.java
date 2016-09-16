@@ -1,20 +1,25 @@
 package com.JavaStudent.MotorDeport.model.order;
 
 import com.JavaStudent.MotorDeport.model.Car;
+import com.JavaStudent.MotorDeport.model.route.Route;
 
-public class OrderForPassengerCar {
-    private static int ID = 0;         //ID заявки
-    private int numberOfPassengers;    //Количество пассажиров
-    private Car car;                   //Автомобиль
+import java.io.Serializable;
 
-    public OrderForPassengerCar(int numberOfPassengers, Car car) {
-        this.ID = ID++;
+public class OrderForPassengerCar implements Serializable{
+    private int orderNumber;              //Номер заявки
+    private int numberOfPassengers;       //Количество пассажиров
+    private Car car;                      //Автомобиль
+    private Route route;                  //Маршрут
+
+    public OrderForPassengerCar(int orderNumber, int numberOfPassengers, Car car, Route route) {
+        this.orderNumber = orderNumber;
         this.numberOfPassengers = numberOfPassengers;
         this.car = car;
+        this.route = route;
     }
 
-    public int getID() {
-        return ID;
+    public int getOrderNumber() {
+        return orderNumber;
     }
 
     public int getNumberOfPassengers() {
@@ -31,5 +36,20 @@ public class OrderForPassengerCar {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    @Override
+    public String toString() {
+        return "Заявка на пассажирскую перевозку: " + "\n" +
+                "маршрут: " + route.getRoutingNumber() + ", "
+                + route.getPointOfDeparture() + " - " + route.getPointOfDeparture() + "\n" +
+                "Автомобиль: " + car.getLicensePlate() + ", водитель: " + car.getDriver().getName() + ", " +
+                "паспорт: " + car.getDriver().getPassportID() + "\n" +
+                "\n-----------------------------------------------------------------------------------" +
+                "-----------------------------------------------------------";
     }
 }

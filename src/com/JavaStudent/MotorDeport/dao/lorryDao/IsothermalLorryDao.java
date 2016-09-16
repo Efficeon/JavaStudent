@@ -1,15 +1,18 @@
 package com.JavaStudent.MotorDeport.dao.lorryDao;
 
-import com.JavaStudent.MotorDeport.model.ConsoleHelper;
+import com.JavaStudent.MotorDeport.exception.ExceptionLorrySelectionNotFound;
+import com.JavaStudent.MotorDeport.View.ConsoleHelper;
+import com.JavaStudent.MotorDeport.model.employee.Driver;
 import com.JavaStudent.MotorDeport.model.lorry.IsothermalLorry;
+import com.JavaStudent.MotorDeport.model.lorry.Lorry;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IsothermalLorryDao implements Serializable{
-        private Map<String, IsothermalLorry> isothermalLorries = new HashMap<>();
-        private ObjectOutputStream lorryOutputStream;
+public class IsothermalLorryDao implements LorryDao, Serializable{
+        private static Map<String, IsothermalLorry> isothermalLorries = new HashMap<>();
+
         public IsothermalLorry createIsothermalLorry(String licensePlate, double carryingCapacity,
                                                         double lengthOfBody, double widthOfBody, double heightOfBody,
                                                         boolean technicalDiagnostics) throws IOException, ClassNotFoundException {
@@ -33,15 +36,16 @@ public class IsothermalLorryDao implements Serializable{
         }
 
         public void addToDatabaseLorry() throws IOException {
-            lorryOutputStream = new ObjectOutputStream(new FileOutputStream("lorry/IsothermalLorry.dat"));
+            ObjectOutputStream lorryOutputStream = new ObjectOutputStream(new FileOutputStream("./src/com/JavaStudent/MotorDeport/MotorDeportDatabase/lorry/IsothermalLorry.dat"));
             lorryOutputStream.writeObject(isothermalLorries);
             lorryOutputStream.close();
         }
 
         public Map<String, IsothermalLorry> getDatabaseIsothermalLorry() throws IOException, ClassNotFoundException {
-            try (ObjectInputStream lorryInputStream = new ObjectInputStream(new FileInputStream("lorry/IsothermalLorry.dat"))){
+            try (ObjectInputStream lorryInputStream = new ObjectInputStream(new FileInputStream("./src/com/JavaStudent/MotorDeport/MotorDeportDatabase/lorry/IsothermalLorry.dat"))){
                 return  (HashMap<String, IsothermalLorry>) lorryInputStream.readObject();
             } catch (EOFException e){
+                //ConsoleHelper.writeMessage("Ошибка работы с файлом \"IsothermalLorry.dat\"\" (EOFException)");
                 return null;
             }
         }
@@ -53,6 +57,51 @@ public class IsothermalLorryDao implements Serializable{
                 }
             }
         }
+
+    @Override
+    public void addDriverToLorry(Lorry lorry, Driver driver) throws IOException, ClassNotFoundException {
+        IsothermalLorry lorryUpdate = isothermalLorries.get(lorry.getLicensePlate());
+        lorryUpdate.setDriver(driver);
+        isothermalLorries.replace(lorry.getLicensePlate(), lorryUpdate);
+        addToDatabaseLorry();
+        getDatabaseIsothermalLorry();
+    }
+
+    public IsothermalLorry getIsothermalLorry(String licensePlate) throws IOException, ClassNotFoundException {
+        if (getDatabaseIsothermalLorry()!=null){
+            for (Map.Entry lorry : getDatabaseIsothermalLorry().entrySet()){
+                if (lorry.getKey().equals(licensePlate)){
+                    return (IsothermalLorry) lorry.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
+    /*public void addDriverToLorry(Lorry lorry, Driver driver) throws IOException, ClassNotFoundException {
+        CoveredBodyLorry lorryUpdate = coveredBodyLorries.get(lorry.getLicensePlate());
+        lorryUpdate.setDriver(driver);
+        coveredBodyLorries.replace(lorry.getLicensePlate(), lorryUpdate);
+        addToDatabaseLorry();
+        getDatabaseCoveredBodyLorry();
+    }*/
+
+    @Override
+    public Lorry lorrySelection(double lengthOfBody, double widthOfBody, double heightOfBody, int carryingCapacity) throws IOException, ClassNotFoundException, ExceptionLorrySelectionNotFound {
+        getDatabaseIsothermalLorry();
+        Lorry lorrySelection = null;
+        for (Map.Entry<String, IsothermalLorry> lorry : isothermalLorries.entrySet()){
+            if(lorry.getValue().getLengthOfBody() > lengthOfBody ||
+                    lorry.getValue().getWidthOfBody() > widthOfBody ||
+                    lorry.getValue().getHeightOfBody() > heightOfBody){
+                if (lorry.getValue().getCarryingCapacity() > carryingCapacity ||
+                        (lorry.getValue().isTechnicalDiagnostics())){
+                    lorrySelection = lorry.getValue();
+                }
+            } else throw new ExceptionLorrySelectionNotFound();
+        }
+        return lorrySelection;
+    }
 
 }
 

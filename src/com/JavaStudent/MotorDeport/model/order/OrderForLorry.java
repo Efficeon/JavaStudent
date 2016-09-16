@@ -1,57 +1,68 @@
 package com.JavaStudent.MotorDeport.model.order;
 
 import com.JavaStudent.MotorDeport.model.Car;
+import com.JavaStudent.MotorDeport.model.route.Route;
 
-public class OrderForLorry {
-    private static int ID = 0;       //ID заявки
-    private byte lengthOfBody;       //Длинна груза
-    private byte widthOfBody;        //Ширина груза
-    private byte heightOfBody;       //Высота груза
-    private byte cargoWeight;        //Вес груза
+import java.io.Serializable;
+
+public class OrderForLorry implements Serializable{
+    private int orderNumber;         //Номер заявки
+    private double lengthOfBody;        //Длинна груза
+    private double widthOfBody;         //Ширина груза
+    private double heightOfBody;        //Высота груза
+    private int cargoWeight;         //Вес груза
     private Car car;                 //Автомобиль
+    private Route route;             //Маршрут
 
-    public OrderForLorry(byte lengthOfBody, byte widthOfBody, byte heightOfBody, byte cargoWeight, Car car){
-        this.ID++;
+    public OrderForLorry(int orderNumber,
+                         double lengthOfBody,
+                         double widthOfBody,
+                         double heightOfBody,
+                         int cargoWeight,
+                         Car car,
+                         Route route){
+        this.orderNumber = orderNumber;
         this.lengthOfBody = lengthOfBody;
         this.widthOfBody = widthOfBody;
         this.heightOfBody = heightOfBody;
         this.cargoWeight = cargoWeight;
         this.car = car;
+        this.route = route;
     }
 
-    public static int getID() {
-        return ID;
+    public int getOrderNumber() {
+        return orderNumber;
     }
 
-    public byte getLengthOfBody() {
+    public double getLengthOfBody() {
         return lengthOfBody;
     }
 
-    public void setLengthOfBody(byte lengthOfBody) {
+    public void setLengthOfBody(double lengthOfBody) {
         this.lengthOfBody = lengthOfBody;
     }
 
-    public byte getWidthOfBody() {
+    public double getWidthOfBody() {
         return widthOfBody;
     }
 
-    public void setWidthOfBody(byte widthOfBody) {
+    public void setWidthOfBody(double widthOfBody) {
         this.widthOfBody = widthOfBody;
     }
 
-    public byte getHeightOfBody() {
+    public double getHeightOfBody() {
         return heightOfBody;
     }
 
-    public void setHeightOfBody(byte heightOfBody) {
+    public void setHeightOfBody(int heightOfBody) {
         this.heightOfBody = heightOfBody;
     }
 
-    public byte getCargoWeight() {
+    public int getCargoWeight() {
         return cargoWeight;
     }
 
-    public void setCargoWeight(byte cargoWeight) {
+    public void setCargoWeight(int cargoWeight) {
         this.cargoWeight = cargoWeight;
     }
 
@@ -59,7 +70,21 @@ public class OrderForLorry {
         return car;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public Route getRoute() {
+        return route;
+    }
+
+    @Override
+    public String toString() {
+         return "Заявка на грузовую перевозку: " + "\n" +
+                "маршрут: " + route.getRoutingNumber() + ", "
+                + route.getPointOfDeparture() + " - " + route.getPointOfDestination() + "\n" +
+                "Автомобиль: " + car.getLicensePlate() + ", водитель: " + car.getDriver().getName() + ", " +
+                "паспорт: " + car.getDriver().getPassportID() + "\n" +
+                "Характеристика груза:" + "\n" +
+                "длинна: " + lengthOfBody + "м., ширина: " +  widthOfBody + "м., высота: " + heightOfBody +
+                "м., вес: " + cargoWeight + "кг." +
+                 "\n-----------------------------------------------------------------------------------" +
+                 "-----------------------------------------------------------";
     }
 }
