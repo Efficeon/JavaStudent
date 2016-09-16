@@ -18,7 +18,14 @@ public class ConsoleHelper {
     }
 
     public static int readInt() throws IOException {
-        return Integer.parseInt(bufferedReader.readLine());
+        int number = 0;
+        try {
+            number = Integer.parseInt(bufferedReader.readLine());
+        }catch (NumberFormatException e){
+            ConsoleHelper.writeMessage("Введены некорректные данные. Повторите ввод.");
+            readInt();
+        }
+        return number;
     }
 
     public static double readDouble() throws IOException {

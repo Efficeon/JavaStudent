@@ -32,12 +32,12 @@ public class CommandExecutor {
                     "4 - Грузовые автомобили\n" +
                     "5 - Легковые автомобили\n" +
                     "6 - Справка\n" +
-                    "7 - Выход и программы");
+                    "7 - Выход из программы");
 
-            String operation = ConsoleHelper.readString();
+            int operation = ConsoleHelper.readInt();
             int orderOperation;
             Command command;
-            switch (Integer.parseInt(operation)) {
+            switch (operation) {
                 case 1:
                     ConsoleHelper.writeMessage("\nВыберите задачу: \n1 - Создат заявку" +
                             "\n2 - Показать заявку по номеру" +
