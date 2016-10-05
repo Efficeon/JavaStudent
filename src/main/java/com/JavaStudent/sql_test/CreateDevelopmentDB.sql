@@ -5,7 +5,7 @@ USE DevelopmentDB;
 /*-------------------------------------------------------------------*/
 
 CREATE TABLE developers(
-  ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  teamID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   FIRSTNAME VARCHAR(100) NOT NULL ,
   LASTNAME VARCHAR(100) NOT NULL ,
   AGE INT NOT NULL ,
@@ -15,28 +15,28 @@ CREATE TABLE developers(
 /*-------------------------------------------------------------------*/
 
 CREATE TABLE skills(
-  ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  teamID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NAME VARCHAR(100) NOT NULL
 )
   ENGINE = InnoDB;
 /*-------------------------------------------------------------------*/
 
 CREATE TABLE projects(
-  ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  teamID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NAME VARCHAR(100) NOT NULL
 )
   ENGINE = InnoDB;
 /*-------------------------------------------------------------------*/
 
 CREATE TABLE companies(
-  ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  teamID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NAME VARCHAR(100) NOT NULL
 )
   ENGINE = InnoDB;
 /*-------------------------------------------------------------------*/
 
 CREATE TABLE customers(
-  ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  teamID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NAME VARCHAR(100) NOT NULL
 )
   ENGINE = InnoDB;
@@ -47,8 +47,8 @@ CREATE TABLE developer_skills (
   developer_id INT NOT NULL ,
   skill_id INT NOT NULL ,
 
-  FOREIGN KEY (developer_id) REFERENCES developers (ID),
-  FOREIGN KEY (skill_id) REFERENCES skills (ID),
+  FOREIGN KEY (developer_id) REFERENCES developers (teamID),
+  FOREIGN KEY (skill_id) REFERENCES skills (teamID),
 
   UNIQUE (developer_id, skill_id)
 )
@@ -59,8 +59,8 @@ CREATE TABLE project_developers (
   project_id INT NOT NULL ,
   developer_id INT NOT NULL ,
 
-  FOREIGN KEY (project_id) REFERENCES projects (ID),
-  FOREIGN KEY (developer_id) REFERENCES developers (ID),
+  FOREIGN KEY (project_id) REFERENCES projects (teamID),
+  FOREIGN KEY (developer_id) REFERENCES developers (teamID),
 
   UNIQUE (project_id, developer_id)
 )
@@ -72,112 +72,112 @@ CREATE TABLE company_projects_customers (
   project_id INT NOT NULL ,
   customer_id INT NOT NULL ,
 
-  FOREIGN KEY (company_id) REFERENCES companies (ID),
-  FOREIGN KEY (project_id) REFERENCES projects (ID),
-  FOREIGN KEY (customer_id) REFERENCES customers (ID),
+  FOREIGN KEY (company_id) REFERENCES companies (teamID),
+  FOREIGN KEY (project_id) REFERENCES projects (teamID),
+  FOREIGN KEY (customer_id) REFERENCES customers (teamID),
 
   UNIQUE (company_id, project_id, customer_id)
 )
   ENGINE = InnoDB;
 /*-------------------------------------------------------------------*/
 
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (1, 'Leonid ', 'Dubravsky', 33, 4000);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (2, 'Maria', 'Krevetochkina', 25, 2700);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (3, 'Makar', 'Drozd', 28, 2800);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (4, 'Trofim', 'Ulitka', 30, 3200);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (5, 'Alla', 'Pokrishkina', 37, 3500);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (6, 'Lada', 'Zhiguleva', 24, 2000);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (7, 'Igor', 'Chorniy', 26, 5000);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (8, 'Tamara', 'Gorina', 23, 2000);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (9, 'Alina', 'Pokohontas', 25, 5500);
-INSERT INTO developers(ID, FIRSTNAME, LASTNAME, AGE, SALARY)
+INSERT INTO developers(teamID, FIRSTNAME, LASTNAME, AGE, SALARY)
 VALUES (10, 'Karina', 'Frost', 24, 2300);
 /*-------------------------------------------------------------------*/
 
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (1, 'JAVA');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (2, 'PHP');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (3, 'SQL');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (4, 'C#');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (5, 'JavaScript');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (6, 'C++');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (7, 'Spring');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (8, 'HTML');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (9, 'Maven');
-INSERT INTO skills(ID, NAME)
+INSERT INTO skills(teamID, NAME)
 VALUES (10, 'FrameWorks');
 /*-------------------------------------------------------------------*/
 
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (1, 'Development of client-bank system');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (2, 'Development of Web Site for company');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (3, 'Maintenance of trade system');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (4, 'Update CRM');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (5, 'Rework of BPM-online');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (6, 'Rework of FlexCube system');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (7, 'Integration DLP System');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (8, 'Development of Accounting system');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (9, 'Support Call center system');
-INSERT INTO projects(ID, NAME)
+INSERT INTO projects(teamID, NAME)
 VALUES (10, 'Integration of Billing system');
 /*-------------------------------------------------------------------*/
 
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (1, 'Trade Group LLC');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (2, 'Contact Bank');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (3, 'Shop "Galatradion"');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (4, 'Luxor LLC');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (5, 'Morgan Company');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (6, 'Limit Trade LLC');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (7, 'Compass Bank');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (8, 'Shop "Niva"');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (9, 'Gogo LLC');
-INSERT INTO customers(ID, NAME)
+INSERT INTO customers(teamID, NAME)
 VALUES (10, 'Sparkling vine Group');
 /*-------------------------------------------------------------------*/
 
-INSERT INTO companies(ID, NAME)
+INSERT INTO companies(teamID, NAME)
 VALUES (1, 'Epam');
-INSERT INTO companies(ID, NAME)
+INSERT INTO companies(teamID, NAME)
 VALUES (2, 'DATAS TECHNOLOGY');
-INSERT INTO companies(ID, NAME)
+INSERT INTO companies(teamID, NAME)
 VALUES (3, 'NCube LTD');
-INSERT INTO companies(ID, NAME)
+INSERT INTO companies(teamID, NAME)
 VALUES (4, 'Artel Outsourcing Group');
-INSERT INTO companies(ID, NAME)
+INSERT INTO companies(teamID, NAME)
 VALUES (5, 'Scalibre');
 /*-------------------------------------------------------------------*/
 
