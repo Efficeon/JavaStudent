@@ -8,15 +8,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class TeamCommand implements Command{
-    TeamFactory teamFactory = new TeamFactory();
-    TeamDao teamDao = new TeamDao();
-
-    String name;
-    int teamID;
-    int projectID;
 
     @Override
     public void execute() throws IOException, ClassNotFoundException, SQLException {
+        TeamFactory teamFactory = new TeamFactory();
+        TeamDao teamDao = new TeamDao();
+
+        String name;
+        int teamID;
+        int projectID;
+
         ConsoleHelper.writeMessage("* * * РАБОЧИЕ ГРУППЫ РАЗРАБОТЧИКОВ * * *" + "\n" +
                 "1 - Добавить | 2 - Удалить | 3 - Изменить | 4 - Показать все | 5 - Найти по ID\n");
     int commandNumber = ConsoleHelper.readInt();

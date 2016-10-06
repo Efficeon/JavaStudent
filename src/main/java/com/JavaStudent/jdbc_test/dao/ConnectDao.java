@@ -21,7 +21,6 @@ public class ConnectDao {
     public static ResultSet selectRecord(String sql) throws SQLException {
         statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
-        statement.close();
         return resultSet;
     }
 

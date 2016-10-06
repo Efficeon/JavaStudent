@@ -1,7 +1,7 @@
 package com.JavaStudent.jdbc_test.dao;
 
-import com.JavaStudent.jdbc_test.view.ConsoleHelper;
 import com.JavaStudent.jdbc_test.model.Developer;
+import com.JavaStudent.jdbc_test.view.ConsoleHelper;
 import com.JavaStudent.jdbc_test.model.Team;
 
 import java.sql.ResultSet;
@@ -43,7 +43,7 @@ public class TeamDao{
     }
 
     public void createElement(int teamID, String name, int projectID) throws SQLException {
-        Team team = new Team(teamID, name, projectID);
+        //Team team = new Team(teamID, name, projectID);
         String sql = "INSERT INTO teams VALUES(?, ?, ?)";
         ConnectDao.addRecord(sql, name, teamID, projectID);
     }

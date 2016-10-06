@@ -1,7 +1,7 @@
 package com.JavaStudent.jdbc_test.dao;
 
-import com.JavaStudent.jdbc_test.view.ConsoleHelper;
 import com.JavaStudent.jdbc_test.model.Developer;
+import com.JavaStudent.jdbc_test.view.ConsoleHelper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DeveloperDao{
     private List<Developer> listDevelopers = null;
-    private ResultSet resultSetDevelopers;
+
 
     protected List<Developer> readingAllElements() throws SQLException {
         String sql = "SELECT * FROM developers";
@@ -41,7 +41,6 @@ public class DeveloperDao{
     }
 
     public void createElement(int developerID, String name, int teamID) throws SQLException {
-        Developer developer = new Developer(developerID, name, teamID);
         String sql = "INSERT INTO developers VALUES(?, ?, ?)";
         ConnectDao.addRecord(sql, name, developerID, teamID);
     }
@@ -60,15 +59,8 @@ public class DeveloperDao{
         }
     }
 
-    /*public void showTeamsDevelopers(int teamID) throws SQLException {
-        readingTeamsElements(teamID);
-        for (Developer developer :listDevelopers){
-            ConsoleHelper.writeMessage(developer.toString());
-        }
-    }*/
-
     private void resultProcessing(String sql) throws SQLException {
-        resultSetDevelopers = ConnectDao.selectRecord(sql);
+        ResultSet resultSetDevelopers = ConnectDao.selectRecord(sql);
         listDevelopers = new ArrayList<>();
         while (resultSetDevelopers.next()){
             int developerID = resultSetDevelopers.getInt("developerID");

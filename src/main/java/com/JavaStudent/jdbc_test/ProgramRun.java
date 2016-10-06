@@ -34,11 +34,12 @@ public class ProgramRun {
                     command.execute();
                     break;
                 case 4:
+                    ConnectDao.closeConnect();
                     return;
                 default:
                     break;
             }
-            ConnectDao.closeConnect();
+
         }
     }
 }

@@ -36,6 +36,11 @@ public class ProjectDao{
         ConnectDao.changeRecord(sql, projectID);
     }
 
+    public void createElement(int projectID, String name) throws SQLException {
+        String sql = "INSERT INTO projects VALUES(?, ?)";
+        ConnectDao.addRecord(sql, name, projectID);
+    }
+
     public void showAllProjects() throws SQLException {
         readingAllElements();
         for (Project project : listProjects){
@@ -48,12 +53,6 @@ public class ProjectDao{
         for (Project project : listProjects){
             ConsoleHelper.writeMessage(project.toString());
         }
-    }
-
-    public void createElement(int projectID, String name) throws SQLException {
-        Project project = new Project(projectID, name);
-        String sql = "INSERT INTO projects VALUES(?, ?)";
-        ConnectDao.addRecord(sql, name, projectID);
     }
 
     private void resultProcessing(String sql) throws SQLException {
